@@ -1,0 +1,13 @@
+CREATE TABLE posts (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    post_id VARCHAR(50) NOT NULL,
+    src_file VARCHAR(50) NOT NULL,
+    title VARCHAR(1000),
+    intro TEXT,
+    author VARCHAR(100) NOT NULL,
+    post_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    view_count INT(10) DEFAULT 0,
+    votes_count INT(10) DEFAULT 0,
+    tags VARCHAR(500),
+    related_posts VARCHAR(500)
+)

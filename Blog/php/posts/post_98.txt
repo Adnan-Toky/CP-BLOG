@@ -1,0 +1,51 @@
+<section class="article-container" data-stats-ve="35"><h1>Create a blog</h1><div class="inline-feedback__container"><div class="article-content-container"><div class="cc"><div class="no-margin"><p>You<span id="340130E"></span> can create and manage your own blog&nbsp;with Blogger.</p>
+</div>
+
+<h2>Create a blog</h2>
+
+<p class="no-margin"><ol>
+  <li><a href="https://www.blogger.com/" target="_blank" rel="noopener">Sign in to Blogger</a>.</li>
+  <li>On the left, click the Down arrow <img src="//lh3.googleusercontent.com/djaIkLnbwYMPGqs5ApyjzRDWdUL0Dx2Ih_hOcePjwqbwDUIzHztM2UY_E6L56hplYG3f=w36-h36" width="18" height="18" alt="Down arrow" title="Down arrow" data-mime-type="image/png" data-alt-src="//lh3.googleusercontent.com/djaIkLnbwYMPGqs5ApyjzRDWdUL0Dx2Ih_hOcePjwqbwDUIzHztM2UY_E6L56hplYG3f">.</li>
+  <li>Click <span id="340128S"></span><strong>New blog</strong><span id="340128E"></span>.</li>
+  <li>Enter a name for your blog.</li>
+  <li>Click <strong>Next</strong>.</li>
+  <li>Choose a blog address&nbsp;or URL.</li>
+  <li>Click <strong>Save</strong>.</li>
+</ol>
+</p>
+
+<div><p><strong>Note</strong>: Make sure you comply with the <a href="https://www.blogger.com/content.g" target="_blank" rel="noopener">Blogger Content Policy</a> and <a href="https://www.google.com/policies/terms/" target="_blank" rel="noopener">Terms of Service</a>.</p>
+</div>
+
+<h2>Manage your blog</h2>
+
+<div class="no-margin"><ul>
+  <li>You can manage who can edit and read your blog. <a href="/blogger/answer/42673">Learn how to control access to your blog</a>.</li>
+  <li>You can choose how you want your blog to look. <a href="/blogger/answer/176245">Learn how to change the design of your blog</a>.</li>
+</ul>
+</div>
+
+<h3>Browsers you can use</h3>
+
+<div><ul>
+  <li>Chrome</li>
+  <li>Firefox</li>
+  <li>Safari</li>
+  <li>MS Edge</li>
+</ul>
+</div>
+
+<p><strong>Note:&nbsp;</strong>New browser versions are frequently released. Make sure to keep your browser updated to the latest version for best results.&nbsp;</p>
+
+<h3>Fix issues with custom domain setup</h3>
+
+<p>If you have a problem with Blogger, see <a href="/blogger#topic=6321979"><span id="340129S"></span>info on troubleshooting issues<span id="340129E"></span></a>.</p>
+</div></div><div><sc-client-feedback-inline-feedback-link><div class="scClientFeedbackInlineFeedbacklinkroot"><button class="scClientFeedbackInlineFeedbacklinkcontainer-button"><div class="scClientFeedbackInlineFeedbacklinkicon"><sc-shared-material-icon><div class="scSharedMaterialiconroot" style="width: 1.5rem; height: 1.5rem;"><html-blob><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"></path>
+  <path d="M11 5h2v6h-2zm0 8h2v2h-2z"></path>
+</svg>
+</html-blob></div></sc-shared-material-icon></div><div class="scClientFeedbackInlineFeedbacklinktext">Give feedback about this article</div></button></div></sc-client-feedback-inline-feedback-link></div><div class="inline-feedback__track" style="position: absolute; top: 0px; bottom: 0px; width: 64px; right: -64px; z-index: 1; margin-bottom: 22px;"><hcfe-feedback-inline-track-button><div class="hcfeFeedbackInlineTrackbuttonroot" aria-hidden="true" style="transform: translateX(44px) translateY(-20px); visibility: hidden;"><sc-shared-material-fab><button class="scSharedMaterialfabroot scSharedMaterialfabmini scSharedMaterialfablowered" tabindex="-1"><span class="scSharedMaterialfabicon"><sc-shared-material-icon><div class="scSharedMaterialiconroot scSharedMaterialiconbaseline" style="width: 1.5rem; height: 1.5rem;"><html-blob><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"></path>
+  <path d="M11 5h2v6h-2zm0 8h2v2h-2z"></path>
+</svg>
+</html-blob></div></sc-shared-material-icon></span><sc-shared-material-interaction-overlay><span></span><div class="scSharedMaterialinteractionoverlayroot" aria-hidden="true"><div class="scSharedMaterialinteractionoverlayhover-overlay"></div><div class="scSharedMaterialinteractionoverlaypressed-overlay"></div><div class="scSharedMaterialinteractionoverlayripple"></div></div></sc-shared-material-interaction-overlay></button></sc-shared-material-fab></div></hcfe-feedback-inline-track-button><div style="top: -35px; left: 74px; position: absolute; pointer-events: none;"><sc-shared-material-rich-tooltip><div class="scSharedMaterialrichtooltippopup-container" style="visibility: hidden; transform: translate(0px, 0px);"><div class="scSharedMaterialrichtooltiproot scSharedMaterialrichtooltipplacement-start scSharedMaterialrichtooltipstyle-accented"><div class="scSharedMaterialrichtooltipcontainer" style=""><div style="width: 160px;">Choose a section to give feedback on</div></div><div class="scSharedMaterialrichtooltipclip-track scSharedMaterialrichtooltipalignment-center"><div class="scSharedMaterialrichtooltipclip"><div class="scSharedMaterialrichtooltipcaret"></div></div></div></div></div></sc-shared-material-rich-tooltip></div></div></div></section>
