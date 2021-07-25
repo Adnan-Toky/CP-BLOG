@@ -6,35 +6,71 @@ import {
     Link,
     useLocation
 } from "react-router-dom";
+import config from "./config";
+import React from "react";
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);
 }
 
-export default function Post() {
+function Post() {
     let query = useQuery();
 
-    // console.log(query.get("id"));
-
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            let data = JSON.parse(this.responseText);
-            if (data.status) {
-                store.dispatch(updatePost(data.data));
-            }
-            // console.log(data);
-        }
-        // else console.log(this);
-    };
-    xhttp.open(
-        "GET",
-        `http://192.168.0.125/blog/php/posts/?id=${query.get('id')}`,
-        true
-    );
-    xhttp.send();
-
-    return (
-        <Settings />
-    );
+    return <PostPage query={query} />
 }
+
+class PostPage extends React.Component {
+    componentDidMount() {
+        let query = this.props.query;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                let data = JSON.parse(this.responseText);
+                if (data.status) {
+                    store.dispatch(updatePost(data.data));
+                }
+                // console.log(data);
+            }
+            // else console.log(this);
+        };
+        xhttp.open(
+            "GET",
+            `${config.url}blog/php/posts/?id=${query.get('id')}`,
+            true
+        );
+        xhttp.send();
+        window.scrollTo(0, 0);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.query != prevProps.query) {
+            let query = this.props.query;
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    let data = JSON.parse(this.responseText);
+                    if (data.status) {
+                        store.dispatch(updatePost(data.data));
+                    }
+                    // console.log(data);
+                }
+                // else console.log(this);
+            };
+            xhttp.open(
+                "GET",
+                `${config.url}blog/php/posts/?id=${query.get('id')}`,
+                true
+            );
+            xhttp.send();
+            window.scrollTo(0, 0);
+        }
+    }
+
+    render() {
+        return (
+            <Settings />
+        );
+    }
+}
+
+export default Post;

@@ -20,6 +20,7 @@ import ThemeOptions from "./components/themeOptions";
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 
 import Page from "./components/page";
+import Header from "./components/header";
 import { PinDropSharp } from "@material-ui/icons";
 
 const useStyles = makeStyles({
@@ -162,6 +163,7 @@ function CustomizationWindow(props) {
 
     return (
         <div>
+            <Header {...props} />
             {/* {props.ui.width}x{props.ui.height} */}
             <Fab
                 onClick={() => {

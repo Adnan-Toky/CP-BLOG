@@ -4,6 +4,7 @@ import { updateReading } from "./../store/actions";
 import store from "./../store/store";
 import Panel from "./panel";
 import TagButton from "./TagButton";
+import { Helmet } from 'react-helmet';
 
 class ScrollEvent extends React.Component {
     constructor(props) {
@@ -82,7 +83,7 @@ function Page(props) {
             width: "100%",
             backgroundColor: backgroundColor,
             position: "fixed",
-            top: 0,
+            top: props.ui.width > 720 ? 60 : 45,
             left: 0,
             zIndex: 100
         },
@@ -109,8 +110,14 @@ function Page(props) {
                     <ScrollEvent handleScroll={updateProgress} />
                     <div className={classes.progress}></div>
                 </div>
-                <div style={{ color: fontColor, padding: 50, boxSizing: "border-box", paddingBottom: 0, paddingLeft: props.layout.marginLeft, backgroundColor: backgroundColor }}>
-                    <h2 style={{ margin: 0, textAlign: "justify" }}>{props.post.title}</h2>
+                <div style={{ color: fontColor, padding: 50, boxSizing: "border-box", paddingBottom: 0, paddingTop: 100, paddingLeft: props.layout.marginLeft, backgroundColor: backgroundColor }}>
+                    <Helmet>
+                        <title>{props.post.title}</title>
+                    </Helmet>
+                    {props.ui.width > 1000 ?
+                        <h1 style={{ margin: 0, textAlign: "justify" }}>{props.post.title}</h1> :
+                        <h2 style={{ margin: 0, textAlign: "justify" }}>{props.post.title}</h2>
+                    }
                     <div style={{ marginTop: 30 }}>
                         <div style={{ display: "inline-block", marginRight: 50, width: 240, marginTop: 6 }}>Published: {formatDate(publishTime)}</div>
                         <div style={{ display: "inline-block", marginTop: 6 }}>Viewed: {props.post.view_count} times</div>
@@ -137,7 +144,7 @@ function Page(props) {
                 position: props.ui.width > 1000 ? "absolute" : "relative",
                 width: props.ui.width > 1000 ? props.ui.width * 0.28 : props.ui.width,
                 right: 0,
-                top: 0,
+                top: props.ui.width > 1000 ? 60 : 0,
                 color: fontColor,
                 zIndex: 1
             }}>
