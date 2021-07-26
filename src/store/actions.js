@@ -33,5 +33,10 @@ const updatePost = (data) => ({
     data
 });
 
+const updatePostList = (data) => ({
+    type: "UPDATE_POST_LIST",
+    data
+});
 
-export { updateUI, updateFont, updateLayout, updateTheme, updateConfig, updateReading, updatePost };
+
+export { updateUI, updateFont, updateLayout, updateTheme, updateConfig, updateReading, updatePost, updatePostList };

@@ -16,8 +16,8 @@ export default function Header(props) {
         setOpen(!open);
     }
 
-    let fontColor = (props.theme === "default") ? "red" : ((props.theme.custom) ? props.theme.customFontColor : (props.theme.invert) ? props.theme.backgroundColor : props.theme.fontColor);
-    let backgroundColor = (props.theme === "default") ? "#444" : ((props.theme.custom) ? props.theme.customBackgroundColor : (props.theme.invert) ? props.theme.fontColor : props.theme.backgroundColor);
+    let fontColor = props.default ? "#333" : ((props.theme.custom) ? props.theme.customFontColor : (props.theme.invert) ? props.theme.backgroundColor : props.theme.fontColor);
+    let backgroundColor = props.default ? "#fff" : ((props.theme.custom) ? props.theme.customBackgroundColor : (props.theme.invert) ? props.theme.fontColor : props.theme.backgroundColor);
     let height = props.ui.width > 720 ? 60 : 45;
     // console.log(backgroundColor);
     // console.log(hex2rgb(backgroundColor, 0.7))
@@ -112,7 +112,7 @@ export default function Header(props) {
     return (
         <div className={classes.root}>
             <div className={classes.bg}></div>
-            <span className={classes.logo}>ADNAN'S BLOG</span>
+            <span className={classes.logo}>ALGOLOGS</span>
             <ul className={classes.nav}>
                 <NavLink activeClassName={classes.activeLink} style={{ textDecoration: "none" }} exact to="/"><li>HOME</li></NavLink>
                 <NavLink activeClassName={classes.activeLink} to="/posts"><li>POSTS</li></NavLink>

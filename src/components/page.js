@@ -79,7 +79,7 @@ function Page(props) {
             }
         },
         progess_bar: {
-            height: 5,
+            height: 3,
             width: "100%",
             backgroundColor: backgroundColor,
             position: "fixed",
@@ -134,6 +134,7 @@ function Page(props) {
                     paddingLeft: props.layout.marginLeft,
                     paddingRight: props.layout.marginRight,
                     marginTop: -props.layout.marginBottom,
+                    paddingBottom: 20
                 }}>
                     {props.post.tags.map((tag, key) => (
                         <TagButton color={fontColor} bgColor={backgroundColor} value={tag} key={key} />
@@ -148,7 +149,7 @@ function Page(props) {
                 color: fontColor,
                 zIndex: 1
             }}>
-                <Panel {...props} />
+                <Panel {...props} title="Related" posts={props.post.related} />
             </div>
         </div >
     );

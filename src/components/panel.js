@@ -9,13 +9,14 @@ import { Link } from 'react-router-dom';
 import TagButton from './TagButton';
 
 function Panel(props) {
-    let fontColor = (props.theme.custom) ? props.theme.customFontColor : (props.theme.invert) ? props.theme.backgroundColor : props.theme.fontColor;
-    let backgroundColor = (props.theme.custom) ? props.theme.customBackgroundColor : (props.theme.invert) ? props.theme.fontColor : props.theme.backgroundColor;
-    let shadowColor = (props.theme.custom) ? props.theme.customShadowColor : props.theme.shadowColor;
+    let fontColor = props.default ? "#333" : ((props.theme.custom) ? props.theme.customFontColor : (props.theme.invert) ? props.theme.backgroundColor : props.theme.fontColor);
+    let backgroundColor = props.default ? "#fff" : ((props.theme.custom) ? props.theme.customBackgroundColor : (props.theme.invert) ? props.theme.fontColor : props.theme.backgroundColor);
     const useStyles = makeStyles({
         root: {
             // backgroundColor: "#2d2d2d",
-            margin: "30px auto",
+            margin: "0px auto",
+            paddingTop: 30,
+            paddingBottom: 30,
             width: "90%",
             borderRadius: 2,
             // overflow: "hidden",
@@ -46,11 +47,11 @@ function Panel(props) {
     return (
         <div className={classes.root}>
             <div className={classes.header}>
-                Related
+                {props.title}
             </div>
             <div>
                 <List style={{ marginLeft: -17 }}>
-                    {props.post.related.map((post, key) => (
+                    {props.posts.map((post, key) => (
                         <Link to={`post?id=${post.id}`} key={key} style={{ textDecoration: "none", color: fontColor }}>
                             <ListItem alignItems="flex-start" button>
                                 <ListItemIcon style={{ padding: 0, marginRight: -30 }}><PublicIcon style={{ width: 20, color: fontColor }} /></ListItemIcon>
@@ -63,48 +64,6 @@ function Panel(props) {
                             </ListItem>
                         </Link>
                     ))}
-                    {/* <ListItem alignItems="flex-start">
-                        <ListItemIcon style={{ padding: 0, marginRight: -30 }}><PublicIcon style={{ width: 20, color: fontColor }} /></ListItemIcon>
-                        <ListItemText style={{ marginTop: 8 }}>
-                            Desktop-only websites just aren’t good enough anymore.
-                        </ListItemText>
-                    </ListItem>
-                    <ListItem alignItems="flex-start">
-                        <ListItemIcon style={{ padding: 0, marginRight: -30 }}><PublicIcon style={{ width: 20 }} /></ListItemIcon>
-                        <ListItemText style={{ marginTop: 8 }}>
-                            Learn how to build websites with a “responsive and mobile first” methodology, allowing a website to display effortlessly on every device that accesses it.
-                        </ListItemText>
-                    </ListItem>
-                    <ListItem alignItems="flex-start">
-                        <ListItemIcon style={{ padding: 0, marginRight: -30 }}><PublicIcon style={{ width: 20 }} /></ListItemIcon>
-                        <ListItemText style={{ marginTop: 8 }}>
-                            The changing way in which we access the web
-                        </ListItemText>
-                    </ListItem>
-                    <ListItem alignItems="flex-start">
-                        <ListItemIcon style={{ padding: 0, marginRight: -30 }}><PublicIcon style={{ width: 20 }} /></ListItemIcon>
-                        <ListItemText style={{ marginTop: 8 }}>
-                            This updated new edition covers all the most up-to-date techniques and tools needed to build great responsive designs, ensuring that your projects won’t just be built ‘right’ for today, but in the future too.
-                        </ListItemText>
-                    </ListItem>
-                    <ListItem alignItems="flex-start">
-                        <ListItemIcon style={{ padding: 0, marginRight: -30 }}><PublicIcon style={{ width: 20 }} /></ListItemIcon>
-                        <ListItemText style={{ marginTop: 8 }}>
-                            Chapter example code is all hosted on rwd.
-                        </ListItemText>
-                    </ListItem>
-                    <ListItem alignItems="flex-start">
-                        <ListItemIcon style={{ padding: 0, marginRight: -30 }}><PublicIcon style={{ width: 20 }} /></ListItemIcon>
-                        <ListItemText style={{ marginTop: 8 }}>
-                            Responsive Web Design with HTML5 and CSS3
-                        </ListItemText>
-                    </ListItem> */}
-                    {/* <li><PublicIcon /><div style={{ display: "inline-block" }}>Desktop-only websites just aren’t good enough anymore.</div></li>
-                    <li>The changing way in which we access the web</li>
-                    <li>Learn how to build websites with a “responsive and mobile first” methodology, allowing a website to display effortlessly on every device that accesses it.</li>
-                    <li>This updated new edition covers all the most up-to-date techniques and tools needed to build great responsive designs, ensuring that your projects won’t just be built ‘right’ for today, but in the future too.</li>
-                    <li>Chapter example code is all hosted on rwd.</li>
-                    <li>Responsive Web Design with HTML5 and CSS3</li> */}
                 </List>
             </div>
         </div>

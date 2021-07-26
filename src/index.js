@@ -3,9 +3,11 @@ import ReactDOM from "react-dom";
 import Settings from "./Post";
 import Home from "./Home";
 import NotFound from "./NotFound";
+import PageFooter from "./components/footer";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import useWindowSize from "./useWindowSize";
 
 
 import AOS from "aos";
@@ -26,6 +28,11 @@ function Post() {
   );
 }
 
+function Footer() {
+  const [width, height] = useWindowSize();
+  return <PageFooter />
+}
+
 const routes = (
   <BrowserRouter>
     <Switch>
@@ -40,6 +47,7 @@ const routes = (
 ReactDOM.render(
   <Provider store={store}>
     <div>{routes}</div>
+    <Footer />
   </Provider>,
   document.querySelector('#root')
 );

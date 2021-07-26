@@ -35,7 +35,8 @@ class PostPage extends React.Component {
         };
         xhttp.open(
             "GET",
-            `${config.url}blog/php/posts/?id=${query.get('id')}`,
+            `${config.url}/php/posts/index.php?id=${query.get('id')}`,
+            // `${config.url}blog/php/posts/?id=${query.get('id')}`,
             true
         );
         xhttp.send();
@@ -58,7 +59,8 @@ class PostPage extends React.Component {
             };
             xhttp.open(
                 "GET",
-                `${config.url}blog/php/posts/?id=${query.get('id')}`,
+                `${config.url}php/posts/index.php?id=${query.get('id')}`,
+                // `${config.url}blog/php/posts/?id=${query.get('id')}`,
                 true
             );
             xhttp.send();

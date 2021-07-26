@@ -1,5 +1,5 @@
 import { createStore, combineReducers } from "redux";
-import { uiReducer, fontReducer, layoutReducer, themeReducer, configReducer, readingReducer, postReducer } from "./reducers";
+import { uiReducer, fontReducer, layoutReducer, themeReducer, configReducer, readingReducer, postReducer, postListReducer } from "./reducers";
 
 const store = createStore(
     combineReducers({
@@ -9,7 +9,8 @@ const store = createStore(
         layout: layoutReducer,
         theme: themeReducer,
         reading: readingReducer,
-        post: postReducer
+        post: postReducer,
+        post_list: postListReducer
     })
 );
 

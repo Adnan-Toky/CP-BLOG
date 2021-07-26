@@ -84,6 +84,18 @@ const postReducer = (state = defaultState.post, action) => {
     }
 };
 
+const postListReducer = (state = defaultState.post_list, action) => {
+    switch (action.type) {
+        case "UPDATE_POST_LIST":
+            return {
+                ...state,
+                ...action.data
+            };
+        default:
+            return state;
+    }
+};
 
 
-export { uiReducer, fontReducer, layoutReducer, themeReducer, configReducer, readingReducer, postReducer };
+
+export { uiReducer, fontReducer, layoutReducer, themeReducer, configReducer, readingReducer, postReducer, postListReducer };
