@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import Settings from "./Post";
 import Home from "./Home";
+import Posts from "./Posts";
 import NotFound from "./NotFound";
 import PageFooter from "./components/footer";
 import { Provider } from "react-redux";
@@ -37,8 +38,9 @@ const routes = (
   <BrowserRouter>
     <Switch>
       <Route path="/" component={Home} exact={true} />
-      <Route path="/post" component={Post} />
       <Route path="/about" component={NotFound} />
+      <Route path="/posts" component={Posts} />
+      <Route path="/post" component={Post} />
       <Route component={NotFound} />
     </Switch>
   </BrowserRouter>

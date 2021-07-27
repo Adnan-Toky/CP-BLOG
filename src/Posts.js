@@ -5,12 +5,9 @@ import React from "react";
 import store from "./store/store";
 import { updatePostList } from "./store/actions";
 import config from "./config";
-import Button from '@material-ui/core/Button';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-import { Link } from "react-router-dom";
 
 
-class Home extends React.Component {
+class Posts extends React.Component {
     componentDidMount() {
         window.scrollTo(0, 0);
         if (this.props.post_list.popular.length == 0) {
@@ -50,27 +47,15 @@ class Home extends React.Component {
                         textAlign: "left",
                         float: "left"
                     }}>
-                        <ExtendedPanel count={5} {...this.props} default={true} title="Popular" posts={this.props.post_list.popular} />
+                        <ExtendedPanel {...this.props} default={true} title="Popular" posts={this.props.post_list.popular} />
                     </div>
                     <div style={{
                         width: this.props.ui.width > 1000 ? "50%" : "100%",
                         display: "inline-block",
                         textAlign: "left"
                     }}>
-                        <ExtendedPanel count={5} {...this.props} default={true} title="Trending" posts={this.props.post_list.trending} />
+                        <ExtendedPanel {...this.props} default={true} title="Trending" posts={this.props.post_list.trending} />
                     </div>
-                </div>
-                <div style={{
-                    textAlign: "center",
-                    padding: "20px 0"
-                }}>
-                    <Link to="posts" style={{ textDecoration: "none" }}>
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            endIcon={<ArrowForwardIosIcon />}
-                        >VIEW ALL POSTS</Button>
-                    </Link>
                 </div>
             </>
         )
@@ -88,4 +73,4 @@ export default connect(state => {
         post_list: state.post_list,
 
     }
-})(Home);
+})(Posts);
