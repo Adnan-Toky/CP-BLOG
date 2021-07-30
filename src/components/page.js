@@ -36,6 +36,14 @@ function formatDate(date) {
     if (h == 0) h = 12;
     var m = date.getMinutes();
     var s = date.getSeconds();
+    if (isNaN(d)) {
+        d = 0;
+        month = 0;
+        y = 0;
+        h = 0;
+        m = 0;
+        s = 0;
+    }
     return '' + (d <= 9 ? '0' + d : d) + ' ' + month + ', ' + y + ' ' + (h <= 9 ? '0' + h : h) + ':' + (m <= 9 ? '0' + m : m) + " " + (date.getHours() >= 12 ? "PM" : "AM");
 }
 

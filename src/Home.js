@@ -1,4 +1,5 @@
-import Header from "./components/header"
+import Header from "./components/header";
+import HeaderPro from "./components/HeaderPro";
 import { connect } from "react-redux";
 import ExtendedPanel from "./components/ExtendedPanel";
 import React from "react";
@@ -8,6 +9,8 @@ import config from "./config";
 import Button from '@material-ui/core/Button';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import { Link } from "react-router-dom";
+import BgImage from "./img/background.jpg";
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 
 class Home extends React.Component {
@@ -38,9 +41,113 @@ class Home extends React.Component {
     render() {
         return (
             <>
-                <Header default={true} {...this.props} />
+                {this.props.ui.width <= 720 ? <Header default={true} {...this.props} /> : <HeaderPro {...this.props} />}
                 <div style={{
-                    marginTop: 50,
+                    marginTop: this.props.ui.width <= 720 ? 45 : -20,
+                    height: 500,
+                    // border: "1px solid red",
+                    // backgroundImage: 'url(' + BgImage + ')',
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "contain",
+                    backgroundPosition: "right",
+                    backgroundColor: "#f3f6fd",
+
+                }}>
+                    <div style={{
+                        padding: this.props.ui.width / 20
+                    }}>
+                        <div style={{
+                            zIndex: 100,
+                            position: "absolute",
+                            top: 90,
+                            right: this.props.ui.width / 20 + 20,
+                            textAlign: "right",
+                            height: 500 - this.props.ui.width / 20,
+                            width: this.props.ui.width / 2 - this.props.ui.width / 20
+                        }}>
+                            <img src={BgImage} style={{
+                                display: "inline-block",
+                                width: "100%",
+                                maxWidth: 550,
+                                zIndex: 0,
+                                height: this.props.ui.width / 2 - this.props.ui.width / 20,
+                                maxHeight: 450,
+                                marginTop: (500 - Math.min(450, this.props.ui.width / 2 - this.props.ui.width / 20)) / 2
+                            }} />
+                        </div>
+                        <div style={{
+                            zIndex: 1000,
+                            position: "absolute",
+                            display: "flex",
+                            alignItems: "center",
+                            // justifyContent: "center",
+                            height: 500 - this.props.ui.width / 10,
+                            width: this.props.ui.width / 2 - this.props.ui.width / 20,
+                            color: "#444"
+                        }}>
+                            <div style={{
+                                fontFamily: 'metropolis',
+                                maxWidth: 500
+                            }}>
+                                <h1>Hello Enthustic Problem Solvers!</h1>
+                                <p style={{
+                                    marginTop: -5,
+                                    lineHeight: "25px",
+                                    color: "#555",
+                                    fontSize: 18
+                                }}>
+                                    Welcome to AlgoLogs, an innovative platform, bringing a unique idea to learn Data Structure and Algorithm for Competitive Programmers!
+                                </p>
+                                <div>
+                                    <a href="/posts" style={{
+                                        display: "inline-flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        color: "#fff",
+                                        backgroundColor: "#0061f2",
+                                        borderColor: "#0061f2",
+                                        lineHeight: 1,
+                                        textAlign: "center",
+                                        verticalAlign: "middle",
+                                        cursor: "pointer",
+                                        userSelect: "none",
+                                        border: "1px solid transparent",
+                                        padding: "0.875rem 1.125rem",
+                                        fontSize: "0.875rem",
+                                        borderRadius: "0.35rem",
+                                        textDecoration: "none"
+                                    }}>
+                                        Get Started <ArrowForwardIcon style={{ height: 16 }} />
+                                    </a>
+                                    <a href="/about" style={{
+                                        display: "inline-flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        color: "#0061f2",
+                                        backgroundColor: "#dae7fb",
+                                        borderColor: "#dae7fb",
+                                        lineHeight: 1,
+                                        textAlign: "center",
+                                        verticalAlign: "middle",
+                                        cursor: "pointer",
+                                        userSelect: "none",
+                                        border: "1px solid transparent",
+                                        padding: "0.875rem 1.125rem",
+                                        fontSize: "0.875rem",
+                                        borderRadius: "0.35rem",
+                                        marginLeft: 10,
+                                        fontWeight: 700,
+                                        textDecoration: "none"
+                                    }}>
+                                        Learn More
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style={{
+                    marginTop: -40,
                     textAlign: "center",
                     paddingTop: 50
                 }}>
@@ -64,11 +171,20 @@ class Home extends React.Component {
                     textAlign: "center",
                     padding: "20px 0"
                 }}>
+                    <div style={{
+                        display: this.props.post_list.popular.length ? "none" : "block",
+                        marginTop: 0,
+                        marginBottom: 50,
+                        fontSize: 20
+                    }}>Loading Posts...</div>
                     <Link to="posts" style={{ textDecoration: "none" }}>
                         <Button
                             variant="contained"
-                            color="primary"
                             endIcon={<ArrowForwardIosIcon />}
+                            style={{
+                                backgroundColor: "#5e6dbd",
+                                color: "#fff"
+                            }}
                         >VIEW ALL POSTS</Button>
                     </Link>
                 </div>

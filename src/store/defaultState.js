@@ -92,7 +92,7 @@ export const defaultState = {
         votes_count: 0,
         tags: [],
         related: [],
-        content: "<h1 style='color: red'>Loading...</h1>"
+        content: "<h2 style='height: 300px;'>Please wait. It's being prepared...</h2>"
     },
     post_list: {
         popular: [],

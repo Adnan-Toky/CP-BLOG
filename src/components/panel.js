@@ -56,7 +56,9 @@ function Panel(props) {
                             <ListItem alignItems="flex-start" button>
                                 <ListItemIcon style={{ padding: 0, marginRight: -30 }}><PublicIcon style={{ width: 20, color: fontColor }} /></ListItemIcon>
                                 <ListItemText style={{ marginTop: 8 }}>
-                                    {post.title}<br />
+                                    <span style={{
+                                        fontWeight: 500
+                                    }}>{post.title}</span><br />
                                     {post.tags.map((tag, tag_key) => (
                                         <TagButton value={tag} bgColor={backgroundColor} color={fontColor} key={tag_key}></TagButton>
                                     ))}

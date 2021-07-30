@@ -31,10 +31,10 @@ function Footer() {
         <div className={classes.root}>
             <div>
                 <ul className={classes.socialIcon}>
-                    <li><PublicIcon style={{ fontSize: 35 }} /></li>
-                    <li style={{ position: "relative", top: -2 }}><GitHubIcon style={{ fontSize: 31 }} /></li>
+                    <li><a href="https://www.algologs.com/" target="_blank"><PublicIcon style={{ fontSize: 35, color: "#fff" }} /></a></li>
+                    <li style={{ position: "relative", top: -2 }}><a href="https://github.com/Adnan-Toky/algologs.com" target="_blank"><GitHubIcon style={{ fontSize: 31, color: "#fff" }} /></a></li>
                     <li><FacebookIcon style={{ fontSize: 35 }} /></li>
-                    <li><MailIcon style={{ fontSize: 35 }} /></li>
+                    <li><a href="mailto:adnanzawad@yahoo.com" target="_blank"><MailIcon style={{ fontSize: 35, color: "#fff" }} /></a></li>
                 </ul>
             </div>
             <div style={{ lineHeight: "20px", marginTop: 20 }}>

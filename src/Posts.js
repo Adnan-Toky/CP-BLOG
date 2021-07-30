@@ -1,11 +1,11 @@
-import Header from "./components/header"
+import HeaderPro from "./components/HeaderPro";
+import Header from "./components/header";
 import { connect } from "react-redux";
 import ExtendedPanel from "./components/ExtendedPanel";
 import React from "react";
 import store from "./store/store";
 import { updatePostList } from "./store/actions";
 import config from "./config";
-
 
 class Posts extends React.Component {
     componentDidMount() {
@@ -35,27 +35,36 @@ class Posts extends React.Component {
     render() {
         return (
             <>
-                <Header default={true} {...this.props} />
+                {this.props.ui.width > 720 ? <HeaderPro default={true} {...this.props} /> : <Header default={true} {...this.props} />}
                 <div style={{
-                    marginTop: 50,
+                    marginTop: -20,
                     textAlign: "center",
-                    paddingTop: 50
+                    paddingTop: 50,
+                    background: "#f6f6f6"
                 }}>
-                    <div style={{
+                    {/* <div style={{
                         width: this.props.ui.width > 1000 ? "50%" : "100%",
                         display: "inline-block",
                         textAlign: "left",
                         float: "left"
                     }}>
                         <ExtendedPanel {...this.props} default={true} title="Popular" posts={this.props.post_list.popular} />
-                    </div>
+                    </div> */}
                     <div style={{
-                        width: this.props.ui.width > 1000 ? "50%" : "100%",
+                        width: this.props.ui.width > 1000 ? "80%" : "100%",
+                        margin: "0 auto",
+                        // width: this.props.ui.width > 1000 ? "50%" : "100%",
                         display: "inline-block",
                         textAlign: "left"
                     }}>
-                        <ExtendedPanel {...this.props} default={true} title="Trending" posts={this.props.post_list.trending} />
+                        <ExtendedPanel {...this.props} default={true} title="Recent Posts" posts={this.props.post_list.trending} />
                     </div>
+                    <div style={{
+                        display: this.props.post_list.popular.length ? "none" : "block",
+                        marginTop: 0,
+                        marginBottom: 50,
+                        fontSize: 20
+                    }}>Loading Posts...</div>
                 </div>
             </>
         )

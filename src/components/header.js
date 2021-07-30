@@ -3,6 +3,13 @@ import { NavLink } from "react-router-dom";
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 import { useState } from "react";
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import HomeIcon from '@material-ui/icons/Home';
+import InfoIcon from '@material-ui/icons/Info';
+import DescriptionIcon from '@material-ui/icons/Description';
 
 function hex2rgb(hex, opacity) {
     if (hex.length == 4) return "rgba(" + ('0x' + hex[1] + hex[1] | 0) + ", " + ('0x' + hex[2] + hex[2] | 0) + ", " + ('0x' + hex[3] + hex[3] | 0) + ", " + opacity + ")";
@@ -51,7 +58,11 @@ export default function Header(props) {
             fontSize: props.ui.width > 720 ? 28 : 22,
             display: "inline-block",
             padding: props.ui.width > 720 ? 15 : 11,
-            fontWeight: 700
+            fontWeight: 100,
+            fontFamily: "heroes assemble",
+            letterSpacing: 1,
+            color: "#0052ce",
+            cursor: "pointer"
         },
         nav: {
             listStyleType: "none",
@@ -84,7 +95,8 @@ export default function Header(props) {
             backgroundColor: hex2rgb(backgroundColor, 0.99),
             height: props.ui.height - 45,
             position: "absolute",
-            width: "100%"
+            width: "100%",
+            transition: "height 1s linear"
         },
         activeLinkMobile: {
             color: "#0080ff"
@@ -99,7 +111,8 @@ export default function Header(props) {
                 color: fontColor,
                 marginLeft: 0,
                 paddingLeft: 0,
-                textAlign: "center",
+                // textAlign: "center",
+                paddingLeft: 20,
                 width: "100%",
                 fontSize: 20,
                 fontWeight: 700
@@ -112,7 +125,10 @@ export default function Header(props) {
     return (
         <div className={classes.root}>
             <div className={classes.bg}></div>
-            <span className={classes.logo}>ALGOLOGS</span>
+            <span className={classes.logo}><a href="/home" style={{
+                color: "inherit",
+                textDecoration: "none"
+            }}>ALGOLOGS</a></span>
             <ul className={classes.nav}>
                 <NavLink activeClassName={classes.activeLink} style={{ textDecoration: "none" }} exact to="/"><li>HOME</li></NavLink>
                 <NavLink activeClassName={classes.activeLink} to="/posts"><li>POSTS</li></NavLink>
@@ -122,11 +138,32 @@ export default function Header(props) {
             <div className={classes.mobileMenu} style={{
                 display: open && props.ui.width <= 720 ? "block" : "none"
             }}>
-                <ul className={classes.mobileNav}>
-                    <NavLink activeClassName={classes.activeLinkMobile} style={{ textDecoration: "none" }} exact to="/"><li>HOME</li></NavLink>
-                    <NavLink activeClassName={classes.activeLinkMobile} style={{ textDecoration: "none" }} to="/posts"><li>POSTS</li></NavLink>
-                    <NavLink activeClassName={classes.activeLinkMobile} style={{ textDecoration: "none" }} to="/about"><li>ABOUT</li></NavLink>
-                </ul>
+                <List>
+                    <NavLink activeClassName={classes.activeLinkMobile} style={{ textDecoration: "none" }} exact to="/">
+                        <ListItem button>
+                            <ListItemIcon>
+                                <HomeIcon style={{ color: fontColor }} />
+                            </ListItemIcon>
+                            <ListItemText primary="HOME" style={{ marginLeft: -20, marginTop: 8, color: fontColor }} />
+                        </ListItem>
+                    </NavLink>
+                    <NavLink activeClassName={classes.activeLinkMobile} style={{ textDecoration: "none" }} to="/posts">
+                        <ListItem button>
+                            <ListItemIcon>
+                                <DescriptionIcon style={{ color: fontColor }} />
+                            </ListItemIcon>
+                            <ListItemText primary="POSTS" style={{ marginLeft: -20, marginTop: 8, color: fontColor }} />
+                        </ListItem>
+                    </NavLink>
+                    <NavLink activeClassName={classes.activeLinkMobile} style={{ textDecoration: "none" }} to="/about">
+                        <ListItem button>
+                            <ListItemIcon>
+                                <InfoIcon style={{ color: fontColor }} />
+                            </ListItemIcon>
+                            <ListItemText primary="ABOUT" style={{ marginLeft: -20, marginTop: 8, color: fontColor }} />
+                        </ListItem>
+                    </NavLink>
+                </List>
             </div>
         </div>
     );

@@ -1,9 +1,20 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
 
+@font-face {
+    font-family: 'metropolis';
+    src: local('metropolis'), url(./../fonts/metropolis/Metropolis-Regular.otf) format('truetype');
+}
+
+@font-face {
+    font-family: 'heroes assemble';
+    src: local('heroes assemble'), url(./../fonts/heroes_assemble/HeroesAssembleRegular-Kmvl.otf) format('truetype');
+}
+
 html {
     scroll-behavior: smooth;
 }
+
 
 body {
     margin: 0;
