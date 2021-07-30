@@ -44,7 +44,7 @@ class Home extends React.Component {
                 {this.props.ui.width <= 720 ? <Header default={true} {...this.props} /> : <HeaderPro {...this.props} />}
                 <div style={{
                     marginTop: this.props.ui.width <= 720 ? 45 : -20,
-                    height: 500,
+                    height: this.props.ui.width > 720 ? 500 : 560,
                     // border: "1px solid red",
                     // backgroundImage: 'url(' + BgImage + ')',
                     backgroundRepeat: "no-repeat",
@@ -57,44 +57,47 @@ class Home extends React.Component {
                         padding: this.props.ui.width / 20
                     }}>
                         <div style={{
-                            zIndex: 100,
+                            zIndex: 8,
                             position: "absolute",
                             top: 90,
                             right: this.props.ui.width / 20 + 20,
-                            textAlign: "right",
-                            height: 500 - this.props.ui.width / 20,
-                            width: this.props.ui.width / 2 - this.props.ui.width / 20
+                            textAlign: this.props.ui.width > 720 ? "right" : "center",
+                            height: this.props.ui.width > 720 ? 500 - this.props.ui.width / 20 : 200,
+                            width: this.props.ui.width > 720 ? this.props.ui.width / 2 - this.props.ui.width / 20 : this.props.ui.width
                         }}>
                             <img src={BgImage} style={{
                                 display: "inline-block",
-                                width: "100%",
+                                width: this.props.ui.width > 720 ? "100%" : "auto",
                                 maxWidth: 550,
                                 zIndex: 0,
-                                height: this.props.ui.width / 2 - this.props.ui.width / 20,
+                                height: this.props.ui.width > 720 ? this.props.ui.width / 2 - this.props.ui.width / 20 : 250,
                                 maxHeight: 450,
-                                marginTop: (500 - Math.min(450, this.props.ui.width / 2 - this.props.ui.width / 20)) / 2
+                                marginTop: this.props.ui.width > 720 ? (500 - Math.min(450, this.props.ui.width / 2 - this.props.ui.width / 20)) / 2 : 0
                             }} />
                         </div>
                         <div style={{
-                            zIndex: 1000,
+                            zIndex: 10,
                             position: "absolute",
                             display: "flex",
                             alignItems: "center",
                             // justifyContent: "center",
-                            height: 500 - this.props.ui.width / 10,
-                            width: this.props.ui.width / 2 - this.props.ui.width / 20,
+                            marginTop: this.props.ui.width > 720 ? 0 : 300,
+                            height: this.props.ui.width > 720 ? 500 - this.props.ui.width / 10 : 200,
+                            width: this.props.ui.width > 720 ? this.props.ui.width / 2 - this.props.ui.width / 20 : this.props.ui.width - 50,
                             color: "#444"
                         }}>
                             <div style={{
                                 fontFamily: 'metropolis',
                                 maxWidth: 500
                             }}>
-                                <h1>Hello Enthustic Problem Solvers!</h1>
+                                <h1 style={{
+                                    fontSize: this.props.ui.width > 720 ? 30 : 23
+                                }}>Hello Enthustic Problem Solvers!</h1>
                                 <p style={{
                                     marginTop: -5,
                                     lineHeight: "25px",
                                     color: "#555",
-                                    fontSize: 18
+                                    fontSize: this.props.ui.width > 720 ? 18 : 14
                                 }}>
                                     Welcome to AlgoLogs, an innovative platform, bringing a unique idea to learn Data Structure and Algorithm for Competitive Programmers!
                                 </p>
