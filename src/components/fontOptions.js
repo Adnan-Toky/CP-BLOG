@@ -27,7 +27,7 @@ const styles = {
 };
 
 export default function FontOptions(props) {
-    console.log(props);
+    // console.log(props);
 
     const handleChangeFontSize = (event, newValue) => {
         store.dispatch(updateFont({ size: newValue }));
@@ -273,7 +273,7 @@ export default function FontOptions(props) {
                                 style={{ color: "#eee" }}
                             >
                                 Choose Font
-              </InputLabel>
+                            </InputLabel>
                             <Select
                                 labelId="select-font-family-label"
                                 // id="demo-simple-select"
@@ -283,9 +283,9 @@ export default function FontOptions(props) {
                                     color: "#aaa"
                                 }}
                             >
-                                <MenuItem value={10}>Ten</MenuItem>
-                                <MenuItem value={20}>Twenty</MenuItem>
-                                <MenuItem value={30}>Thirty</MenuItem>
+                                <MenuItem value={"Ubuntu"}>Ubuntu</MenuItem>
+                                <MenuItem value={"metropolis"}>Metropolis</MenuItem>
+                                <MenuItem value={"arial"}>Arial</MenuItem>
                             </Select>
                         </FormControl>
                     </div>

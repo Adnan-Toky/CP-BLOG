@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import Post from "./Post";
 import Home from "./Home";
 import Posts from "./Posts";
+import About from "./About";
 import NotFound from "./NotFound";
 import PageFooter from "./components/footer";
 import { Provider } from "react-redux";
@@ -15,19 +16,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 import "./css/style.css";
-
-// function Post() {
-//   useEffect(() => {
-//     AOS.init();
-//     AOS.refresh();
-//   }, []);
-
-//   return (
-//     <div>
-//       <Settings />
-//     </div>
-//   );
-// }
 
 function Footer() {
     const [width, height] = useWindowSize();
@@ -44,7 +32,7 @@ const routes = (
         <Switch>
             <Route path="/" component={Home} exact={true} />
             <Route path="/home" component={Home} />
-            <Route path="/about" component={NotFound} />
+            <Route path="/about" component={About} />
             <Route path="/posts" component={Posts} />
             <Route path="/post" component={Post} />
             <Route component={NotFound} />

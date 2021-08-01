@@ -96,7 +96,8 @@ export default function Header(props) {
             height: props.ui.height - 45,
             position: "absolute",
             width: "100%",
-            transition: "height 1s linear"
+            top: 45,
+            transition: "max-height 1s linear"
         },
         activeLinkMobile: {
             color: "#0080ff"

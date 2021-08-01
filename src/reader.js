@@ -21,7 +21,6 @@ import Brightness4Icon from '@material-ui/icons/Brightness4';
 
 import Page from "./components/page";
 import Header from "./components/header";
-import { PinDropSharp } from "@material-ui/icons";
 
 const useStyles = makeStyles({
     root: {
@@ -149,7 +148,7 @@ function SettingsDrawer(props) {
 }
 
 function CustomizationWindow(props) {
-    // const [width, height] = useWindowSize();
+    const [width, height] = useWindowSize();
     let fontColor = (props.theme.custom) ? props.theme.customFontColor : (props.theme.invert) ? props.theme.backgroundColor : props.theme.fontColor;
     let backgroundColor = (props.theme.custom) ? props.theme.customBackgroundColor : (props.theme.invert) ? props.theme.fontColor : props.theme.backgroundColor;
 

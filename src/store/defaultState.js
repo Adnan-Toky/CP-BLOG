@@ -55,7 +55,7 @@ export const defaultState = {
         allignment: "justify",
         italic: "normal",
         underline: "none",
-        family: "'Ubuntu', sans-serif",
+        family: "Ubuntu",
         color: "#000000"
     },
     layout: {

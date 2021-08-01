@@ -1,24 +1,28 @@
-import Header from "./components/header"
+import Header from "./components/header";
+import HeaderPro from "./components/HeaderPro";
 import { connect } from "react-redux";
-
+import img from "./img/404.jpg";
 
 function NotFound(props) {
     return (
         <>
-            <Header theme="default" {...props} />
-            <h1 style={{ marginTop: 100 }}>404 Not Found</h1>
+            {props.ui.width > 720 ? <HeaderPro {...props} /> : <Header {...props} />}
+            <div style={{
+                backgroundColor: "#f3f6fd",
+                marginTop: -20,
+                textAlign: "center",
+                paddingTop: 20
+            }}>
+                <img src={img} height={300} />
+                <h1 style={{ padding: 20, marginBottom: 0, paddingBottom: 30, paddingTop: 10, fontFamily: "metropolis" }}>404!<br /> Not Found</h1>
+            </div>
+
         </>
     )
 }
 
 export default connect(state => {
     return {
-        ui: state.ui,
-        font: state.font,
-        layout: state.layout,
-        theme: state.theme,
-        config: state.config,
-        reading: state.reading,
-        post: state.post
+        ui: state.ui
     }
 })(NotFound);

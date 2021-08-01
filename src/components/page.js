@@ -47,6 +47,31 @@ function formatDate(date) {
     return '' + (d <= 9 ? '0' + d : d) + ' ' + month + ', ' + y + ' ' + (h <= 9 ? '0' + h : h) + ':' + (m <= 9 ? '0' + m : m) + " " + (date.getHours() >= 12 ? "PM" : "AM");
 }
 
+class PostContent extends React.Component {
+    constructor(props) {
+        super(props);
+        if (window.MathJax) window.MathJax.Hub.Config({ tex2jax: { inlineMath: [['$', '$'], ['\\(', '\\)']] } });
+    }
+
+    componentDidMount() {
+        if (window.MathJax) window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub, document.querySelector('.challenge__description')]);
+    }
+
+    componentDidUpdate() {
+        // console.log(window.MathJax);
+        if (window.MathJax) window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub, document.querySelector('.challenge__description')]);
+        else {
+            setTimeout(this.componentDidMount, 1000);
+        }
+    }
+
+    render() {
+        return (
+            <div className="challenge__description" dangerouslySetInnerHTML={{ __html: this.props.content }}>{/* {this.props.content} */}</div>
+        )
+    }
+}
+
 function Page(props) {
     let fontColor = (props.theme.custom) ? props.theme.customFontColor : (props.theme.invert) ? props.theme.backgroundColor : props.theme.fontColor;
     let backgroundColor = (props.theme.custom) ? props.theme.customBackgroundColor : (props.theme.invert) ? props.theme.fontColor : props.theme.backgroundColor;
@@ -55,6 +80,7 @@ function Page(props) {
     let publishTime = new Date(props.post.time);
     const useStyles = makeStyles({
         root: {
+            fontFamily: props.font.family,
             fontSize: props.font.size,
             fontWeight: props.font.weight,
             textShadow: (props.font.shadow || props.font.blur) ? `${props.font.shadow}px ${props.font.shadow}px ${props.font.blur}px ${shadowColor}` : "none",
@@ -137,7 +163,8 @@ function Page(props) {
                         marginTop: 10
                     }}></div>
                 </div>
-                <div id="page" style={{ boxSizing: "border-box", width: "100%" }} className={classes.root} dangerouslySetInnerHTML={{ __html: props.post.content }}></div>
+                {/* <PostContent content={props.post.content}></PostContent> */}
+                <div id="page" style={{ boxSizing: "border-box", width: "100%" }} className={classes.root}><PostContent content={props.post.content}></PostContent></div>
                 <div style={{
                     paddingLeft: props.layout.marginLeft,
                     paddingRight: props.layout.marginRight,

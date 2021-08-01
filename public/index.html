@@ -22,6 +22,42 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+  <style>
+    img[alt="www.000webhost.com"] {
+      display: none;
+    }
+  </style>
+
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$']],
+          processEscapes: true,
+          processEnvironments: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+          TeX: {
+            equationNumbers: { autoNumber: "AMS" },
+            extensions: ["AMSmath.js", "AMSsymbols.js"]
+          }
+        }
+      });
+      MathJax.Hub.Queue(function () {
+
+
+
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i = 0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+
+      MathJax.Hub.Config({
+
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
   <title>AlgoLogs - Made DSA easy!</title>
 </head>
 
