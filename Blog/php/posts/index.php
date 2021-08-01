@@ -49,6 +49,12 @@
                 $row_data["tags"] = explode(" ", $row["tags"]);
                 $ret["data"] = $row_data;
 
+                $q = "UPDATE posts SET view_count = ? WHERE post_id = ?";
+                $q = $conn->prepare($q);
+                $vc = $row["view_count"]+1;
+                $q->bind_param("ii", $vc, $id);
+                $q->execute();
+
                 $posts = explode(" ", $row["related_posts"]);
                 $ret["data"]["related"] = array();
                 foreach($posts as $post_id){
