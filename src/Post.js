@@ -4,23 +4,25 @@ import { updatePost, updateRelatedPostList } from "./store/actions"
 import {
     BrowserRouter as Router,
     Link,
-    useLocation
+    useLocation,
+    useParams
 } from "react-router-dom";
 import config from "./config";
 import React from "react";
 import Loader from "./components/loader";
 import PostLoadFailed from "./components/postLoadFailed";
 import { db } from "./firebase";
-import { Gesture } from "@material-ui/icons";
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);
 }
 
 function Post() {
-    let query = useQuery();
 
-    return <PostPage query={query} />
+    // let query = useQuery();
+    let { id } = useParams();
+
+    return <PostPage query={id} />
 }
 
 class PostPage extends React.Component {
@@ -41,7 +43,7 @@ class PostPage extends React.Component {
         let relatedPosts = {
             posts: []
         };
-        db.doc(`posts/${query.get('id')}`).get().then((snapshot) => {
+        db.doc(`posts/${query}`).get().then((snapshot) => {
             if (!snapshot.data()) {
                 this.setState({
                     loading: false,
@@ -51,7 +53,7 @@ class PostPage extends React.Component {
             }
             else {
 
-                db.doc(`posts/${query.get('id')}/data/${query.get('id')}`).get().then((snapshot2) => {
+                db.doc(`posts/${query}/data/${query}`).get().then((snapshot2) => {
                     if (!snapshot2.data()) {
                         this.setState({
                             loading: false,
@@ -68,6 +70,8 @@ class PostPage extends React.Component {
                             loading: false
                         });
 
+                        if (window.hljs) window.hljs.highlightAll();
+
                         for (let id in snapshot2.data().related) {
                             db.doc(`posts/${snapshot2.data().related[id]}`).get().then((ss) => {
                                 relatedPosts.posts.push(ss.data());
@@ -75,7 +79,7 @@ class PostPage extends React.Component {
                             })
                         }
 
-                        db.doc(`posts/${query.get('id')}`).update({
+                        db.doc(`posts/${query}`).update({
                             view: obj.view + 1
                         }).catch(err => {
                             console.log(err)

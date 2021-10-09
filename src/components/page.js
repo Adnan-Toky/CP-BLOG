@@ -147,6 +147,9 @@ function Page(props) {
                 <div style={{ color: fontColor, padding: 50, boxSizing: "border-box", paddingBottom: 0, paddingTop: 100, paddingLeft: props.layout.marginLeft, backgroundColor: backgroundColor }}>
                     <Helmet>
                         <title>{props.post.title}</title>
+                        <meta name="description" content={props.post.desc} />
+                        <meta name="author" content={props.post.author} />
+                        {props.post.keyword ? <meta name="keywords" content={props.post.keyword.join(", ")} /> : ""}
                     </Helmet>
                     {props.ui.width > 1000 ?
                         <h1 style={{ margin: 0, textAlign: "justify" }}>{props.post.title}</h1> :

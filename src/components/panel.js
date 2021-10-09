@@ -53,7 +53,7 @@ function Panel(props) {
             <div>
                 <List style={{ marginLeft: -17 }}>
                     {props.posts.map((post, key) => (
-                        <Link to={`post?id=${post.id}`} key={key} style={{ textDecoration: "none", color: fontColor }}>
+                        <Link to={`/post/${post.id}`} key={key} style={{ textDecoration: "none", color: fontColor }}>
                             <ListItem alignItems="flex-start" button>
                                 <ListItemIcon style={{ padding: 0, marginRight: -30 }}><PublicIcon style={{ width: 20, color: fontColor }} /></ListItemIcon>
                                 <ListItemText style={{ marginTop: 8 }}>

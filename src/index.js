@@ -33,7 +33,7 @@ const routes = (
             <Route path="/home" component={Home} />
             <Route path="/about" component={About} />
             <Route path="/posts" component={Posts} />
-            <Route path="/post" component={Post} />
+            <Route path="/post/:id" component={Post} />
             <Route component={NotFound} />
         </Switch>
     </BrowserRouter>
