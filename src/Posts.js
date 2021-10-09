@@ -6,30 +6,61 @@ import React from "react";
 import store from "./store/store";
 import { updatePostList } from "./store/actions";
 import config from "./config";
+import { db } from "./firebase";
+
 
 class Posts extends React.Component {
     componentDidMount() {
         window.scrollTo(0, 0);
-        if (this.props.post_list.popular.length == 0) {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-                if (this.readyState === 4 && this.status === 200) {
-                    let data = JSON.parse(this.responseText);
-                    if (data.status) {
-                        store.dispatch(updatePostList(data.data));
-                    }
-                    // console.log(data);
-                }
-                // else console.log(this);
-            };
-            xhttp.open(
-                "GET",
-                `${config.url}php/home/index.php`,
-                true
-            );
-            xhttp.send();
-            window.scrollTo(0, 0);
-        }
+
+        let postList = {
+            popular: [],
+            trending: []
+        };
+        db.collection("posts").get().then((snapshot) => {
+            snapshot.forEach((doc) => {
+                postList.popular.push(doc.data());
+                postList.trending.push(doc.data());
+            });
+            store.dispatch(updatePostList(postList));
+        }).catch((error) => {
+            console.log(error, 1);
+        });
+
+        // db.collection("posts").where("id", "==", "1_0_0").get().then((snapshot) => {
+        //     snapshot.forEach((doc) => {
+        //         console.log(doc.id, doc.data());
+        //     });
+        // }).catch((error) => {
+        //     console.log(error, 1);
+        // });
+
+        // db.collection("posts").doc("100").get().then((snapshot) => {
+        //     console.log(snapshot.data());
+        // }).catch((error) => {
+        //     console.log(error, 2);
+        // });
+
+        // if (this.props.post_list.popular.length == 0) {
+        //     var xhttp = new XMLHttpRequest();
+        //     xhttp.onreadystatechange = function () {
+        //         if (this.readyState === 4 && this.status === 200) {
+        //             let data = JSON.parse(this.responseText);
+        //             if (data.status) {
+        //                 store.dispatch(updatePostList(data.data));
+        //             }
+        //             // console.log(data);
+        //         }
+        //         // else console.log(this);
+        //     };
+        //     xhttp.open(
+        //         "GET",
+        //         `${config.url}php/home/index.php`,
+        //         true
+        //     );
+        //     xhttp.send();
+        //     window.scrollTo(0, 0);
+        // }
     }
 
     render() {

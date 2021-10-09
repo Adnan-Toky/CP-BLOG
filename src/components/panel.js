@@ -13,11 +13,12 @@ function Panel(props) {
     let backgroundColor = props.default ? "#fff" : ((props.theme.custom) ? props.theme.customBackgroundColor : (props.theme.invert) ? props.theme.fontColor : props.theme.backgroundColor);
     const useStyles = makeStyles({
         root: {
-            // backgroundColor: "#2d2d2d",
+            // backgroundColor: "#eee",
             margin: "0px auto",
             paddingTop: 30,
             paddingBottom: 30,
             width: "90%",
+            height: "auto",
             borderRadius: 2,
             // overflow: "hidden",
             color: fontColor,

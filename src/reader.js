@@ -195,6 +195,7 @@ export default connect(state => {
         theme: state.theme,
         config: state.config,
         reading: state.reading,
-        post: state.post
+        post: state.post,
+        related: state.related
     }
 })(CustomizationWindow);

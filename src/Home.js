@@ -11,31 +11,48 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import { Link } from "react-router-dom";
 import BgImage from "./img/background.jpg";
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import { db } from "./firebase";
 
 
 class Home extends React.Component {
     componentDidMount() {
         window.scrollTo(0, 0);
-        if (this.props.post_list.popular.length == 0) {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-                if (this.readyState === 4 && this.status === 200) {
-                    let data = JSON.parse(this.responseText);
-                    if (data.status) {
-                        store.dispatch(updatePostList(data.data));
-                    }
-                    // console.log(data);
-                }
-                // else console.log(this);
-            };
-            xhttp.open(
-                "GET",
-                `${config.url}php/home/index.php`,
-                true
-            );
-            xhttp.send();
-            window.scrollTo(0, 0);
-        }
+
+        let postList = {
+            popular: [],
+            trending: []
+        };
+        db.collection("posts").get().then((snapshot) => {
+            snapshot.forEach((doc) => {
+                postList.popular.push(doc.data());
+                postList.trending.push(doc.data());
+            });
+            store.dispatch(updatePostList(postList));
+        }).catch((error) => {
+            console.log(error, 1);
+        });
+        // console.log("posts load...")
+
+        // if (this.props.post_list.popular.length == 0) {
+        //     var xhttp = new XMLHttpRequest();
+        //     xhttp.onreadystatechange = function () {
+        //         if (this.readyState === 4 && this.status === 200) {
+        //             let data = JSON.parse(this.responseText);
+        //             if (data.status) {
+        //                 store.dispatch(updatePostList(data.data));
+        //             }
+        //             // console.log(data);
+        //         }
+        //         // else console.log(this);
+        //     };
+        //     xhttp.open(
+        //         "GET",
+        //         `${config.url}php/home/index.php`,
+        //         true
+        //     );
+        //     xhttp.send();
+        //     window.scrollTo(0, 0);
+        // }
     }
 
     render() {
@@ -205,6 +222,6 @@ export default connect(state => {
         config: state.config,
         reading: state.reading,
         post_list: state.post_list,
-
+        related: state.related
     }
 })(Home);

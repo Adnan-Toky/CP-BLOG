@@ -88,8 +88,9 @@ export const defaultState = {
         author: "",
         intro: "",
         time: "",
-        view_count: 0,
-        votes_count: 0,
+        view: 0,
+        like: 0,
+        dislike: 0,
         tags: [],
         related: [],
         content: "<h2 style='height: 300px;'>Please wait. It's being prepared...</h2>"
@@ -97,6 +98,9 @@ export const defaultState = {
     post_list: {
         popular: [],
         trending: []
+    },
+    related: {
+        posts: []
     }
 };
 

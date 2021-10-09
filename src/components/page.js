@@ -77,7 +77,7 @@ function Page(props) {
     let backgroundColor = (props.theme.custom) ? props.theme.customBackgroundColor : (props.theme.invert) ? props.theme.fontColor : props.theme.backgroundColor;
     let shadowColor = (props.theme.custom) ? props.theme.customShadowColor : props.theme.shadowColor;
     var pageWidth = (props.ui.width > 1000) ? props.ui.width * 0.7 : parseInt(props.ui.width);
-    let publishTime = new Date(props.post.time);
+    let publishTime = new Date(props.post.time.seconds * 1000);
     const useStyles = makeStyles({
         root: {
             fontFamily: props.font.family,
@@ -154,7 +154,7 @@ function Page(props) {
                     }
                     <div style={{ marginTop: 30 }}>
                         <div style={{ display: "inline-block", marginRight: 50, width: 240, marginTop: 6 }}>Published: {formatDate(publishTime)}</div>
-                        <div style={{ display: "inline-block", marginTop: 6 }}>Viewed: {props.post.view_count} times</div>
+                        <div style={{ display: "inline-block", marginTop: 6 }}>Viewed: {props.post.view} times</div>
                     </div>
                     <div style={{
                         height: 0.5,
@@ -184,7 +184,7 @@ function Page(props) {
                 color: fontColor,
                 zIndex: 1
             }}>
-                <Panel {...props} title="Related" posts={props.post.related} />
+                <Panel {...props} title="Related" posts={props.related.posts} />
             </div>
         </div >
     );

@@ -96,6 +96,18 @@ const postListReducer = (state = defaultState.post_list, action) => {
     }
 };
 
+const relatedPostListReducer = (state = defaultState.related, action) => {
+    switch (action.type) {
+        case "UPDATE_RELATED_POST_LIST":
+            return {
+                ...state,
+                ...action.data
+            };
+        default:
+            return state;
+    }
+};
 
 
-export { uiReducer, fontReducer, layoutReducer, themeReducer, configReducer, readingReducer, postReducer, postListReducer };
+
+export { uiReducer, fontReducer, layoutReducer, themeReducer, configReducer, readingReducer, postReducer, postListReducer, relatedPostListReducer };

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+    <script type="text/javascript" async
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+            MathJax.Hub.Config({
+                tex2jax: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']],
+                    displayMath: [['$$', '$$']],
+                    processEscapes: true,
+                    processEnvironments: true,
+                    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                    TeX: {
+                        equationNumbers: { autoNumber: "AMS" },
+                        extensions: ["AMSmath.js", "AMSsymbols.js"]
+                    }
+                }
+            });
+            MathJax.Hub.Queue(function () {
+
+
+
+                var all = MathJax.Hub.getAllJax(), i;
+                for (i = 0; i < all.length; i += 1) {
+                    all[i].SourceElement().parentNode.className += ' has-jax';
+                }
+            });
+
+            MathJax.Hub.Config({
+
+                TeX: { equationNumbers: { autoNumber: "AMS" } }
+            });
+        </script>
+</head>
+
+<body>
+    <h1>Relations of <strong>bitwise and, or & xor</strong> operations</h1>
+    <div>
+        <h2>Relations:</h2>
+        <p>
+        <ul>
+            <li>$(a + b) = (a ~ | ~ b) + (a ~ \& ~ b)$</li>
+            <li>$(a ~ | ~ b) = (a ~ \oplus ~ b) + (a ~ \& ~ b)$</li>
+        </ul>
+        </p>
+
+        <h2>Explanation:</h2>
+        <p>
+            Let's consider two integers $a$ and $b$. Binary representations of $a$ and $b$ are:
+        </p>
+        <p>
+            $$
+            a = 11001011 \\
+            b = 01011111
+            $$
+        </p>
+        <p>
+            Here,
+            $$
+            a = 11001011\\
+            b = 01011111
+            $$
+            Now,
+            $$
+            (a ~\oplus~ b) = 10010100\\
+            (a ~|~ b) = 11011111\
+            $$
+        </p>
+        <p>
+            <b>What are the differences between the results of bitwise xor and or operations?</b>
+        </p>
+        <p>
+            When two bits are different, both xor and or result $1$.
+            $$
+            (0 ~\oplus~ 1) = (0 ~|~ 1) = 1
+            $$
+        </p>
+        <p>
+            When both bits are 0, xor and or result 0.
+            $$
+            (0 ~\oplus~ 0) = (0 ~|~ 0) = 0
+            $$
+        </p>
+        <p>
+            The only difference is when both bits are 1. In this case, xor results 0, but or results 1.
+            $$
+            (1 ~\oplus~ 1) = 0\\
+            (1 ~|~ 1) = 1
+            $$
+        </p>
+        <p>
+            In the first example, the result of $(a ~\oplus~ b)$ and $(a ~|~ b)$ differs where both bits are $1$. If we
+            take the result
+            of bitwise and of $a$ and $b$, then we will get the bits set where xor and or result different.
+            $$
+            (a ~\&~ b) = 01001011
+            $$
+
+            Now if we add this with the result of $(a ~\oplus~ b)$, we will get back the result of $(a ~|~ b)$.
+            $$
+            (a ~\oplus~ b) = 10010100\\
+            (a ~\&~ b) = 01001011\\
+            (a ~|~ b) = 11011111
+            $$
+
+            The result is the same as $(a ~|~ b)$.
+        </p>
+        <p>
+            So, we came up with the idea
+            $$
+            (a ~|~ b) = (a ~\oplus~ b) + (a ~\&~ b)
+            $$
+
+            Now, what happens when we add two numbers $a$ and $b$?
+
+            $$
+            a = 11001011\\
+            b = 01011111\\
+            (a + b) = 100101010
+            $$
+
+            We simply add every bit from the least significant bit to the most significant bit. When the result exceeds
+            $2$, we take it modulo $2$. Then divide it by $2$ and keep it as carry. Then we add this carry shifting one
+            bit
+            left.
+
+            For example, when we add bit $1+1$, the result is $2$. We write $2\%2=0$ and keep $2/2=1$ as carry and add
+            this
+            $1$
+            with the left bit. But when we xor two numbers, we just ignore this carry bit.
+
+            While adding two numbers, the only possible way to get this carry is by adding $1+1$. In the case of xor, we
+            are
+            ignoring the carry bit which was added shifting one bit left. We can get these positions by taking bitwise
+            and of those numbers. Then we can just left shift the result by $1$ and add it with $(a ~\oplus~ b)$.
+            However,
+            we can
+            restore the result of $(a + b)$.
+            $$
+            a = 11001011\\
+            b = 01011111\\
+            -------\\
+            (a ~\oplus~ b) = 10010100\\
+            (a ~\&~ b)\ll1=10010110\\
+            -------\\
+            (a + b)=100101010$$
+            So,
+            $$(a + b)=(a~\oplus~ b) + (a ~\&~ b)\ll1$$
+            Left shifting by $1$ means multiplying by $2$.
+            $$(a + b)=(a ~\oplus~ b) + 2×(a~\&~ b)$$
+            Replacing $(a ~\oplus~ b)$ with $(a ~|~ b) - (a ~\&~ b)$, we get the equation,
+            $$(a + b)=(a ~|~ b)- (a ~\&~b) + 2×(a ~\&~ b)\\
+            \text{or,}\quad (a + b)=(a ~|~ b) + (a ~\&~ b)$$</p>
+    </div>
+
+</body>
+
+</html>

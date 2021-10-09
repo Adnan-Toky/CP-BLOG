@@ -11,7 +11,6 @@ import store from "./store/store";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import useWindowSize from "./useWindowSize";
 
-
 import AOS from "aos";
 import "aos/dist/aos.css";
 
