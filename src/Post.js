@@ -31,13 +31,14 @@ class PostPage extends React.Component {
         this.state = {
             loading: true,
             status: false,
-            failed: false
+            failed: false,
+            query: this.props.query
         }
         this.loadDoc = this.loadDoc.bind(this);
     }
 
     loadDoc() {
-        if (this.state.status || this.state.failed) return;
+        if ((this.state.status || this.state.failed) && this.props.query === this.state.query) return;
         let query = this.props.query;
         let t = this;
         let relatedPosts = {
@@ -67,15 +68,20 @@ class PostPage extends React.Component {
                         store.dispatch(updatePost(obj));
                         t.setState({
                             status: true,
-                            loading: false
+                            loading: false,
+                            query: query
                         });
 
                         if (window.hljs) window.hljs.highlightAll();
 
                         for (let id in snapshot2.data().related) {
                             db.doc(`posts/${snapshot2.data().related[id]}`).get().then((ss) => {
-                                relatedPosts.posts.push(ss.data());
-                                store.dispatch(updateRelatedPostList(relatedPosts));
+                                if (ss.data()) {
+                                    relatedPosts.posts.push(ss.data());
+                                    store.dispatch(updateRelatedPostList(relatedPosts));
+                                }
+                            }).catch(err => {
+                                console.log(err);
                             })
                         }
 
